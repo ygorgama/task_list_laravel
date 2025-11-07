@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Database\Factories\TaskFactory;
+use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,5 +21,15 @@ class Task extends Model
     protected $casts = [
         'completed' => 'boolean',
     ];
+
+    public function scopeCompleted(Builder $query)
+    {
+        return $query->where('completed', true);
+    }
+
+    public function scopeIncomplete(Builder $query)
+    {
+        return $query->where('completed', false);
+    }
 
 }
