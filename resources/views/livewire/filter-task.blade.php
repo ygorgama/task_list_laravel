@@ -32,4 +32,11 @@
             {{ $tasks->links() }}
         </div>
     </section>
+    <div>
+        <x-button
+            href="{{ route('tasks.create') }}"
+            label="Create New Task"
+            class="mt-6"
+        />
+    </div>
 </div>
