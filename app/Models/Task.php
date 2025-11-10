@@ -27,6 +27,11 @@ class Task extends Model
         return $query->where('completed', true);
     }
 
+    public function scopeSearchByTitle(Builder $query, string $title)
+    {
+        return $query->where('title', 'ilike', '%' . $title . '%');
+    }
+
     public function scopeIncomplete(Builder $query)
     {
         return $query->where('completed', false);
